@@ -104,9 +104,15 @@ void Editor::Init() {
 }
 
 void Editor::OnDrawMenu() {
-    bool s_ServerEnabled = m_Server.GetEnabled();
-    if (ImGui::Checkbox("EDITOR SERVER", &s_ServerEnabled)) {
-        ToggleEditorServerEnabled();
+    if (ImGui::Button(ICON_MD_VIDEO_SETTINGS "  EDITOR")) {
+        m_ShowUI = !m_ShowUI;
+    }
+
+    if (m_ShowUI) {
+        bool s_ServerEnabled = m_Server.GetEnabled();
+        if (ImGui::Checkbox("EDITOR SERVER", &s_ServerEnabled)) {
+            ToggleEditorServerEnabled();
+        }
     }
 
     /*if (ImGui::Button(ICON_MD_VIDEO_SETTINGS "  EDITOR"))
@@ -451,6 +457,8 @@ std::string BehaviorToString(ECompiledBehaviorType p_Type) {
 
 void Editor::OnDrawUI(bool p_HasFocus) {
     auto s_ImgGuiIO = ImGui::GetIO();
+
+    if (!m_ShowUI) return;
 
     DrawEntityTree();
     DrawEntityProperties();

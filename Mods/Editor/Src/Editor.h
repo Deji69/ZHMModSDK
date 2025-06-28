@@ -149,6 +149,7 @@ private:
     ZEntityRef m_CameraRT;
     bool m_raycastLogging; // Mainly used for the raycasting logs
 
+    bool m_ShowUI = false;
     bool m_CameraActive = false;
     ZEntityRef m_OriginalCam;
 
