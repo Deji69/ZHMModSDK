@@ -416,7 +416,7 @@ void Editor::OnSelectEntity(ZEntityRef p_Entity, const std::optional<std::string
     m_ShouldScrollToEntity = p_Entity.GetEntity() != nullptr;
 
     if (s_DifferentEntity) {
-        m_Server.OnEntitySelected(p_Entity, std::move(p_ClientId));
+        m_Server.OnEntitySelected(p_Entity, p_ClientId);
         m_SelectedEntity = p_Entity;
     }
     else
